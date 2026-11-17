@@ -1,6 +1,6 @@
 {
   "name": "screenpost-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Launcher for the ScreenPost MCP helper",
   "license": "MIT",

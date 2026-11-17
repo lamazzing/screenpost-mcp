@@ -7,3 +7,6 @@ server.dns-alt.md
 README.md
 *.mcpb
 node_modules
+Dockerfile
+glama.json
+*.sha256

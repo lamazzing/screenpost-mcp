@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "screenpost",
   "display_name": "ScreenPost",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Control ScreenPost, the macOS screenshot and screen recording app, from your agent: capture, annotate, redact, export, share, and draft X posts behind a native approval sheet.",
   "long_description": "ScreenPost is a paid native macOS app (Apple Silicon, macOS 14+, $29 once, free 7-day trial). This bundle is a small launcher that connects your MCP client to the helper inside the installed app. Install ScreenPost from https://screenpost.app, then turn on Settings > Agents > Allow agents to control ScreenPost. Posting to X and scheduling always require approval in the app.",
   "author": { "name": "Luca Mazzi", "url": "https://screenpost.app" },

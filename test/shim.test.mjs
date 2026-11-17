@@ -40,17 +40,38 @@ function session(env = {}) {
 
 const init = { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'shim-test', version: '0' } };
 
-// (b) missing helper: clear JSON-RPC error plus stderr message
+// (b) missing helper: handshake and catalog still work, tool calls explain setup
 {
   const s = session({ SCREENPOST_MCP_HELPER: '/nonexistent/screenpost-mcp' });
   const r = await s.call('initialize', init);
-  assert.equal(r.error.code, -32000);
-  assert.match(r.error.message, /https:\/\/screenpost\.app/);
-  assert.match(r.error.message, /Settings > Agents/);
-  const { c } = await s.close();
-  assert.equal(c, 1);
+  assert.equal(r.result.serverInfo.name, 'screenpost');
+  assert.match(r.result.instructions, /https:\/\/screenpost\.app/);
+  s.notify('notifications/initialized');
+  const t = await s.call('tools/list', {});
+  assert.ok(t.result.tools.length >= 40, 'catalog has ' + t.result.tools.length + ' tools');
+  for (const tool of t.result.tools) assert.equal(tool.inputSchema?.type, 'object', tool.name);
+  const c = await s.call('tools/call', { name: 'get_status', arguments: {} });
+  assert.equal(c.result.isError, true);
+  assert.match(c.result.content[0].text, /Settings > Agents/);
+  assert.deepEqual((await s.call('ping')).result, {});
+  assert.equal((await s.call('resources/list', {})).error.code, -32601);
+  const { c: code } = await s.close();
+  assert.equal(code, 0);
   assert.match(s.err(), /not installed/);
-  console.log('ok missing helper: JSON-RPC error + stderr, exit 1');
+  console.log('ok missing helper: initialize + ' + t.result.tools.length + ' tools listed, calls return setup help');
+}
+
+// large final output from the helper reaches the client before the shim exits
+{
+  const fake = new URL('./fake-big.sh', import.meta.url).pathname;
+  fs.writeFileSync(fake, '#!/bin/sh\nhead -c 300000 /dev/zero | tr \'\\0\' x\necho\nexit 0\n', { mode: 0o755 });
+  const p = spawn('node', [shim], { env: { ...process.env, SCREENPOST_MCP_HELPER: fake }, stdio: ['pipe', 'pipe', 'inherit'] });
+  let n = 0; p.stdout.on('data', (d) => (n += d.length));
+  p.stdin.end();
+  const code = await new Promise((r) => p.on('close', r));
+  fs.unlinkSync(fake);
+  assert.equal(code, 0); assert.equal(n, 300001);
+  console.log('ok 300 KB of helper output flushed before exit');
 }
 
 // exit code passthrough with a fake helper
@@ -80,6 +101,9 @@ if (fs.existsSync(REAL)) {
     assert.ok(c.result || c.error, name + ' no reply');
     console.log('ok', name, c.error ? 'error: ' + c.error.message : 'returned');
   }
+  const snap = JSON.parse(fs.readFileSync(new URL('../server/tools.json', import.meta.url), 'utf8')).map((x) => x.name);
+  assert.deepEqual([...names].sort(), [...snap].sort(), 'server/tools.json is out of date with the installed helper');
+  console.log('ok tools.json matches the installed helper');
   if (process.env.DUMP_TOOLS) console.log(names.join('\n'));
   await s.close();
 } else {
