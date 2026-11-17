@@ -1,7 +1,8 @@
 {
   "mcpServers": {
     "screenpost": {
-      "command": "/Applications/ScreenPost.app/Contents/Helpers/screenpost-mcp"
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/server/index.js"]
     }
   }
 }
