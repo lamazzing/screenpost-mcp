@@ -72,7 +72,7 @@ Add to `.vscode/mcp.json` (VS Code uses the `servers` key):
 
 - Agent access is off by default and is switched on by you in ScreenPost > Settings > Agents.
 - Everything runs on your Mac. The helper forwards to the running app over local IPC.
-- Composing, posting and scheduling to X go through a native approval sheet in the app. The agent cannot approve its own request.
+- Posting and scheduling to X, share links, uploads and deletes wait for your approval in a native sheet in the app, showing the exact image, text and destination. No tool can approve its own request.
 - `redact_secrets` finds and covers likely secrets in a capture before you export or share it.
 - Share links are capability URLs that you can update or revoke (`update_share_link`, `revoke_share_link`).
 
