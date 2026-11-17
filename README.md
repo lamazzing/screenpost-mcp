@@ -9,7 +9,7 @@ Full documentation: https://screenpost.app/mcp
 ## Requirements
 
 - A Mac with Apple Silicon, macOS 14 or later.
-- ScreenPost installed in /Applications. It is a paid app ( once) with a free 7-day trial: https://screenpost.app
+- ScreenPost installed in /Applications. It is a paid app ($29 once) with a free 7-day trial: https://screenpost.app
 - In ScreenPost, turn on Settings > Agents > "Allow agents to control ScreenPost". Until then the helper has nothing to talk to.
 
 The helper path is `/Applications/ScreenPost.app/Contents/Helpers/screenpost-mcp`. It speaks newline-delimited JSON-RPC over stdio and takes no arguments or environment variables. The server name is `screenpost`.
