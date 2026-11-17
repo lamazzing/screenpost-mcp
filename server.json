@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "app.screenpost/screenpost",
+  "title": "ScreenPost",
+  "description": "Control the ScreenPost macOS app: capture, annotate, redact, export, share, post to X.",
+  "version": "1.0.0",
+  "websiteUrl": "https://screenpost.app/mcp",
+  "repository": { "url": "https://github.com/lamazzing/screenpost-mcp", "source": "github" },
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/lamazzing/screenpost-mcp/releases/download/v1.0.0/screenpost.mcpb",
+      "fileSha256": "02739995d707e4867780cb55c697a4259017173b3cc23392d92feaff29df1664",
+      "transport": { "type": "stdio" }
+    }
+  ]
+}

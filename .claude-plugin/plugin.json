@@ -1,0 +1,10 @@
+{
+  "name": "screenpost",
+  "version": "1.0.0",
+  "description": "Connect Claude Code to the ScreenPost macOS app: capture, annotate, redact, export, share, and draft X posts behind a native approval sheet.",
+  "author": { "name": "Luca Mazzi", "url": "https://screenpost.app" },
+  "homepage": "https://screenpost.app/mcp",
+  "repository": "https://github.com/lamazzing/screenpost-mcp",
+  "license": "MIT",
+  "keywords": ["screenshot", "screen-recording", "macos", "mcp"]
+}

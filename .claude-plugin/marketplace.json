@@ -1,0 +1,13 @@
+{
+  "name": "screenpost",
+  "owner": { "name": "Luca Mazzi", "email": "support@screenpost.app" },
+  "plugins": [
+    {
+      "name": "screenpost",
+      "source": "./",
+      "description": "Connect Claude Code to the ScreenPost macOS app (requires the app installed and Settings > Agents turned on).",
+      "version": "1.0.0",
+      "homepage": "https://screenpost.app/mcp"
+    }
+  ]
+}

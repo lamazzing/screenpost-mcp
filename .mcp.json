@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "screenpost": {
+      "command": "/Applications/ScreenPost.app/Contents/Helpers/screenpost-mcp"
+    }
+  }
+}

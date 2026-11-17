@@ -1,0 +1,9 @@
+.git
+.claude-plugin
+.mcp.json
+test
+server.json
+server.dns-alt.md
+README.md
+*.mcpb
+node_modules

@@ -1,0 +1,11 @@
+{
+  "name": "screenpost-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Launcher for the ScreenPost MCP helper",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/shim.test.mjs",
+    "pack": "npx --yes @anthropic-ai/mcpb@2.1.2 pack . screenpost.mcpb"
+  }
+}
