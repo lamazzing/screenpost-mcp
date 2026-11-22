@@ -1,5 +1,7 @@
 # ScreenPost MCP
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/lamazzing/screenpost-mcp)](https://m8ven.ai/mcp/lamazzing/screenpost-mcp?s=readme)
+
 Connect an MCP client to [ScreenPost](https://screenpost.app), a native macOS app for screenshots, screen recordings and posting to X. The MCP server is a stdio helper that ships inside the app. This repository contains only the launchers and listing files that point your client at it: an MCPB bundle, a Claude Code plugin, and registry metadata.
 
 The ScreenPost app itself is proprietary. The MIT license in this repository covers only the files in this repository.
